@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import javax.swing.JOptionPane;
 
 
 public class Calculator2 extends Thread {
@@ -82,10 +83,11 @@ public class Calculator2 extends Thread {
     public static void main(String[] args) {
         System.out.println("Creando socket servidor");
         ServerSocket serverSocket = null;
+        int puerto = Integer.parseInt(JOptionPane.showInputDialog("Escriba el puerto del servidor:"));
         try {
             serverSocket = new ServerSocket();
             System.out.println("Realizando el bind");
-            InetSocketAddress addr = new InetSocketAddress("192.168.0.1", 5555);
+            InetSocketAddress addr = new InetSocketAddress("192.168.0.1", puerto);
             serverSocket.bind(addr);
         } catch (IOException e){
             e.printStackTrace();
